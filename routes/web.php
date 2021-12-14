@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Email\Verify\User\HashController as EmailHashController;
 use App\Http\Controllers\Email\VerifyController;
 use App\Http\Controllers\Email\Verify\NotificationController;
+use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +22,6 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 
 Route::get('/', function () {
     return view('welcome');
