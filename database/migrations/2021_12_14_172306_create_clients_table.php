@@ -17,7 +17,6 @@ class CreateClientsTable extends Migration
             $table->id();
             $table->string('cod')->unique();
             $table->string('name');
-            $table->string('city');
             $table->string('slug')->unique();
             $table->timestamps();
 

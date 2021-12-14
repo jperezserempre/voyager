@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\City;
 use App\Models\Client;
 use Illuminate\Database\Seeder;
 use TCG\Voyager\Models\DataRow;
@@ -80,24 +81,28 @@ class ClientsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($clientDataType, 'city');
+        $dataRow = $this->dataRow($clientDataType, 'client_belongsto_city_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'select_dropdown',
+                'type'         => 'relationship',
                 'display_name' => __('voyager.data_rows.city'),
                 'required'     => 1,
-                'browse'       => 0,
+                'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
-                'delete'       => 1,
+                'delete'       => 0,
                 'details'      => [
-                    'relationship' => [
-                        'key'   => 'id',
-                        'label' => 'name',
-                    ],
+                    'model'       => City::class,
+                    'table'       => 'cities',
+                    'type'        => 'belongsTo',
+                    'column'      => 'city_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'cities',
+                    'pivot'       => 0,
                 ],
-                'order' => 4,
+                'order'        => 10,
             ])->save();
         }
 
@@ -151,6 +156,21 @@ class ClientsTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataRow = $this->dataRow($clientDataType, 'city_id');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => __('voyager.data_rows.city'),
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'order'        => 8,
+            ])->save();
+        }
+
         //Menu Item
         $menu = Menu::where('name', 'admin')->firstOrFail();
         $menuItem = MenuItem::firstOrNew([
@@ -180,7 +200,7 @@ class ClientsTableSeeder extends Seeder
             $client->fill([
                 'cod'  => 'abc',
                 'name' => 'Client 1',
-                'city' => 'City 1',
+                'city_id' => 1,
             ])->save();
         }
 
@@ -191,7 +211,7 @@ class ClientsTableSeeder extends Seeder
             $client->fill([
                 'cod'  => 'xyz',
                 'name' => 'Client 2',
-                'city' => 'City 2',
+                'city_id' => 2,
             ])->save();
         }
     }

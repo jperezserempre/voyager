@@ -7,7 +7,9 @@ return [
   ],
   'data_rows' => [
     'cod' => 'Code',
-    'city' => 'City'
+    'city' => 'City',
+    'photo' => 'Photo',
+    'pass'  => 'Passport'
   ],
   'data_types' => [
     'client' => [

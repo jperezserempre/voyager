@@ -47,6 +47,21 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataRow = $this->dataRow($userDataType, 'pass');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => __('voyager.data_rows.pass'),
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'order'        => 3,
+            ])->save();
+        }
+
         $dataRow = $this->dataRow($userDataType, 'email');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -58,7 +73,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 1,
-                'order'        => 3,
+                'order'        => 4,
             ])->save();
         }
 
@@ -73,7 +88,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 0,
-                'order'        => 4,
+                'order'        => 5,
             ])->save();
         }
 
@@ -88,7 +103,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 5,
+                'order'        => 6,
             ])->save();
         }
 
@@ -103,7 +118,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 6,
+                'order'        => 7,
             ])->save();
         }
 
@@ -118,22 +133,22 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 7,
+                'order'        => 8,
             ])->save();
         }
 
-        $dataRow = $this->dataRow($userDataType, 'avatar');
+        $dataRow = $this->dataRow($userDataType, 'photo');
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'image',
-                'display_name' => __('voyager::seeders.data_rows.avatar'),
-                'required'     => 0,
+                'display_name' => __('voyager.data_rows.photo'),
+                'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 1,
-                'order'        => 8,
+                'order'        => 9,
             ])->save();
         }
 
