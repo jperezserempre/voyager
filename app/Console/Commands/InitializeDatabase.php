@@ -46,11 +46,13 @@ class InitializeDatabase extends Command
     private function migrate()
     {
         Artisan::call('migrate:fresh');
+        $this->line('migrate:fresh => completed');
     }
-
+    
     private function install_voyager()
     {
         Artisan::call('voyager:install --with-dummy');
+        $this->line('migrate:fresh => voyager with data');
     }
 
     // private function seed()
