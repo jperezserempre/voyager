@@ -33,3 +33,15 @@ Se debe configurar el .env con el email "smtp" para que funcione, yo lo configur
 
 ## Importante
 Antes de ejecutar las colas, se debe desactivar el UserObserver ya que se están encolado los emails desde allí para evitar costos del servicio de email inesperados :D
+
+## Import y Export Users
+```sh
+import: /users/import
+export: /users/export
+```
+
+Ambas rutas están en las rutas "api", no poseen ningún bloqueo de login, cors, etc, por lo que se pueden ejecutar desde "postman"
+
+El import recibe un archivo "file" y encola los datos en chunks de 500
+
+El Export está encolado a travéz de chunks de 500 por lo que cuando termine, el archivo se va a guardar en el storage.
