@@ -24,6 +24,10 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
+    return redirect('/admin');
+});
+
+Route::get('/welcome-verified', function () {
     return view('welcome');
 })->middleware('verified');
 
