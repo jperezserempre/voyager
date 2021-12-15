@@ -22,8 +22,11 @@ Route::post('/users/export', [UserController::class, 'export']);
 
 Route::group(['middleware' => 'jwt'], function() {
     Route::post('login',     [ApiAuthController::class, 'login']);
-    Route::get('user/info',  [ApiAuthController::class, 'me'   ]);
-    Route::post('user/info', [ApiUserController::class, 'update_name']);
+    
+    Route::group(['midlleware' => 'auth'], function() {
+        Route::get('user/info',  [ApiAuthController::class, 'me'   ]);
+        Route::post('user/info', [ApiUserController::class, 'update_name']);
+    });
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
