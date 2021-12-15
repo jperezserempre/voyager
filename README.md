@@ -28,3 +28,8 @@ php artisan queue:listen
 10. Si
 11. Si 
 12. Si
+
+Se debe configurar el .env con el email "smtp" para que funcione, yo lo configure con gmail :D
+
+## Importante
+Antes de ejecutar las colas, se debe desactivar el UserObserver ya que se están encolado los emails desde allí para evitar costos del servicio de email inesperados :D
