@@ -5,6 +5,7 @@ Voyager Project :D
 ```sh
 composer install --ignore-platform-reqs
 php artisan jwt:secret
+php artisan db:initialize
 ```
 
 # Tasks Completed
