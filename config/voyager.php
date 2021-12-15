@@ -15,7 +15,7 @@ return [
         'default_role'                 => 'user',
         'default_avatar'               => 'users/default.png',
         'redirect'                     => '/admin',
-        'namespace'                    => \App\Models\User::class,
+        'namespace'                    => App\Models\User::class,
     ],
 
     /*
